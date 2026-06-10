@@ -54,10 +54,6 @@ The backend follows a simple layered structure:
 
 The scheduler reuses the existing GitHub pipeline service. It does not duplicate scan, match, resume generation, PDF, Drive, or email logic.
 
-## Ethical Use
-
-ApplyWise AI does not implement unauthorized LinkedIn scraping, company-site crawling, or auto-apply spam. LinkedIn jobs should be handled through manually pasted URLs or job descriptions. Automation is limited to user-configured sources and user-authorized Google integrations.
-
 ## Prerequisites
 
 - Node.js 20+
@@ -282,46 +278,6 @@ Users must connect Google Drive and Gmail permissions before enabling automation
   - Compile a generated resume PDF.
   - Upload it to Drive.
   - Send or trigger a digest.
-
-## Git Safety Checklist
-
-Before pushing, run:
-
-```bash
-git status --short --ignored
-git diff
-git check-ignore -v .env backend/storage frontend/node_modules frontend/.next backend/.venv
-rg -n --hidden --glob '!.git' --glob '!frontend/node_modules/**' --glob '!frontend/.next/**' --glob '!backend/.venv/**' --glob '!backend/storage/**' '(sk-[A-Za-z0-9_-]+|AIza[0-9A-Za-z_-]+|refresh_token|access_token|private_key|client_secret)' .
-```
-
-Do not stage `.env`, credentials, generated PDFs, local storage, virtual environments, `node_modules`, or `.next`.
-
-## GitHub Push Instructions
-
-If you want `applywise-ai/` to be the repository root:
-
-```bash
-cd /Users/swatisingh/Documents/ApplyWise/applywise-ai
-git init
-git add .
-git commit -m "Initial commit for ApplyWise AI"
-git branch -M main
-git remote add origin <MY_GITHUB_REPO_URL>
-git push -u origin main
-```
-
-If you use the existing parent Git repository at `/Users/swatisingh/Documents/ApplyWise`, run:
-
-```bash
-cd /Users/swatisingh/Documents/ApplyWise
-git add applywise-ai
-git commit -m "Initial commit for ApplyWise AI"
-git branch -M main
-git remote add origin <MY_GITHUB_REPO_URL>
-git push -u origin main
-```
-
-Do not run `git push` until you have reviewed `git status` and confirmed no secrets are staged.
 
 ## Future Scope
 
