@@ -1,0 +1,6 @@
+from uuid import UUID
+
+
+MOCK_USER_ID = UUID("00000000-0000-0000-0000-000000000001")
+MOCK_USER_EMAIL = "mock.user@example.com"
+MOCK_USER_FULL_NAME = "Mock User"
